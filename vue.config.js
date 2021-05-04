@@ -1,6 +1,7 @@
 const configs = require("./src/config");
 
 module.exports = {
+    
     devServer: {
         host: 'localhost', //  访问的接口
         port: 8080,

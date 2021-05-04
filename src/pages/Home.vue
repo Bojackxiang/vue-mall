@@ -8,7 +8,7 @@
 
 <script>
 import NavHeader from "../components/NavHeader.vue";
-import NavFooter from '../components/NavFooter.vue'
+import NavFooter from "../components/NavFooter.vue";
 export default {
   components: { NavHeader, NavFooter },
   name: "home",
@@ -16,4 +16,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  
 </style>

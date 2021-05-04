@@ -5,23 +5,20 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "App",
   components: {},
 
   mounted() {
-    axios
-      .get("/api/activity/servicetime")
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    
   },
 };
 </script>
 
-<style>
+<style lang="scss">
+html,
+body {
+  margin: 0px !important;
+  padding: 0px !important;
+}
 </style>
