@@ -9,12 +9,11 @@ import config from './config'
 axios.defaults.baseURL = config.baseURL
 axios.defaults.timeout = 8000; // ! 一定要设置超时的时间
 
-
 axios.interceptors.response.use(function(response){
-  // console.log(response)
-  // const responseData = response.data();
+// console.log(response)
+// const responseData = response.data();
   console.log('response received ...');
-  return response
+  return response.data
   
   // if(responseData.status === 0 ){
   //   return response.data; // 这里就是直接 把 数据返回

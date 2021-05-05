@@ -1,24 +1,10 @@
 <template>
   <div class="header">
-    <div class="nav-topbar">
-      <div class="container">
-        <div class="topbar-menu">
-          <a href="javascript:;">小米商城</a>
-          <a href="javascript:;">MUI</a>
-          <a href="javascript:;">云服务</a>
-          <a href="javascript:;">协议规则</a>
-        </div>
-        <div class="topbar-user">
-          <a href="javascript:;" v-if="username">{{ username }}</a>
-          <a href="javascript:;" v-if="!username" @click="login">登录</a>
-          <a href="javascript:;" v-if="username" @click="logout">退出</a>
-          <a href="/#/order/list" v-if="username">我的订单</a>
-          <a href="javascript:;" class="my-cart"
-            ><span class="icon-cart"> </span>购物车({{ cartCount }})</a
-          >
-        </div>
-      </div>
-    </div>
+    <Topbar
+      :username="alex"
+      :cartCount="12"
+      :login="login"
+    />
     <div class="nav-header">
       <div class="container">
         <div class="header-logo">
@@ -36,7 +22,7 @@
                 >
                   <a v-bind:href="'/#/product/' + item.id" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="item.mainImage" :alt="item.subtitle" />
+                      <img :src="item.mainImage" :alt="item.subtitle" /> 
                     </div>
                     <div class="pro-name">{{ item.name }}</div>
                     <div class="pro-price">{{ item.price | currency }}</div>
@@ -45,6 +31,7 @@
               </ul>
             </div>
           </div>
+          <!-- 这里可以优化的 -->
           <div class="item-menu">
             <span>RedMi红米</span>
           </div>
@@ -55,7 +42,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'/imgs/nav-img/nav-3-1.jpg'" alt="" />
+                      <img src="/imgs/nav-img/nav-3-1.jpg" alt="" />
                     </div>
                     <div class="pro-name">小米壁画电视 65英寸</div>
                     <div class="pro-price">6999元</div>
@@ -64,7 +51,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'/imgs/nav-img/nav-3-2.jpg'" alt="" />
+                      <img src="/imgs/nav-img/nav-3-2.jpg" alt="" />
                     </div>
                     <div class="pro-name">小米全面屏电视E55A</div>
                     <div class="pro-price">1999元</div>
@@ -73,7 +60,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'/imgs/nav-img/nav-3-3.png'" alt="" />
+                      <img src="/imgs/nav-img/nav-3-2.jpg" alt="" />
                     </div>
                     <div class="pro-name">小米电视4A 32英寸</div>
                     <div class="pro-price">699元</div>
@@ -82,7 +69,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'/imgs/nav-img/nav-3-4.jpg'" alt="" />
+                      <img src="/imgs/nav-img/nav-3-4.jpg" alt="" />
                     </div>
                     <div class="pro-name">小米电视4A 55英寸</div>
                     <div class="pro-price">1799元</div>
@@ -91,7 +78,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'/imgs/nav-img/nav-3-5.jpg'" alt="" />
+                      <img src="/imgs/nav-img/nav-3-5.jpg" alt="" />
                     </div>
                     <div class="pro-name">小米电视4A 65英寸</div>
                     <div class="pro-price">2699元</div>
@@ -100,7 +87,7 @@
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'/imgs/nav-img/nav-3-6.png'" alt="" />
+                      <img src="/imgs/nav-img/nav-3-5.jpg" alt="" />
                     </div>
                     <div class="pro-name">查看全部</div>
                     <div class="pro-price">查看全部</div>
@@ -122,8 +109,52 @@
 </template>
 
 <script>
+
+import Topbar from "./TopBar";
 export default {
   name: "nav-header",
+  components: {
+    Topbar,
+  },
+  data(){
+    return {
+      username: 'Alex',
+      phoneList: [],
+    }
+  },
+  filters:{
+    currency(value){
+      if(!value) return '0.00 元';
+      return `${value} 元`
+    }
+  },
+  mounted(){
+    this.getProductList()
+  },
+  methods:{
+    getProductList(){
+      this.axios.get('/api/products', {
+        params: {
+          categoryId: '100012',
+        },
+      }).then(res => {
+        const data = res.data.list.slice(0, 6);
+        console.log(data)
+        this.phoneList = data
+      })
+    },
+    test(){
+      console.log(this)
+    },
+    goToCart(){
+      this.$router.push('/cart')
+    },
+    login(){
+      this.$router.push('/login')
+    }
+  },
+
+
 };
 </script>
 
@@ -132,31 +163,6 @@ export default {
 @import "./../assets/scss/mixin.scss";
 @import "./../assets/scss/config.scss";
 .header {
-  .nav-topbar {
-    height: 39px;
-    line-height: 39px;
-    background-color: #333333;
-    color: #b0b0b0;
-    .container {
-      @include flex();
-      a {
-        display: inline-block;
-        color: #b0b0b0;
-        margin-right: 17px;
-      }
-      .my-cart {
-        width: 110px;
-        background-color: #ff6600;
-        text-align: center;
-        color: #ffffff;
-        margin-right: 0;
-        .icon-cart {
-          @include bgImg(16px, 12px, "/imgs/icon-cart-checked.png");
-          margin-right: 4px;
-        }
-      }
-    }
-  }
   .nav-header {
     .container {
       position: relative;
