@@ -26,6 +26,10 @@ export default new Router({
                     component: index, 
                 },
                 {
+                    path: 'home',
+                    redirect: '/'
+                },
+                {
                     path: 'product/:id',
                     name: 'page-product',
                     component: Product, 
