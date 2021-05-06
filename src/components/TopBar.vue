@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  props: ["username", "cartCount", 'login'],
+  props: ["username", "cartCount", 'login', 'logout'],
 
   mounted() {
     this.check();
