@@ -6,7 +6,7 @@
         <li class="product" v-for="(item, index) in itemList" :key="index">
           <a v-bind:href="'/#/product/' + item.id" target="_blank">
             <div class="pro-img">
-              <img :src="item.mainImage" :alt="item.subtitle" />
+              <img  v-lazy="item.mainImage" :alt="item.subtitle" />
             </div>
             <div class="pro-name">{{ item.name }}</div>
             <div class="pro-price">{{ item.price | currency }}</div>
@@ -53,9 +53,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./../assets/scss/base.scss";
-@import "./../assets/scss/mixin.scss";
-@import "./../assets/scss/config.scss";
+@import "../../assets/scss/base.scss";
+@import "../../assets/scss/mixin.scss";
+@import "../../assets/scss/config.scss";
 .item-menu {
   display: inline-block;
   color: #333333;

@@ -9,6 +9,7 @@
         <div class="header-menu">
           <MenuItemDropdownVue :name="'小米手机'" :code="100012" />
           <MenuItemDropdownVue :name="'小米手机'" :code="100012" />
+          <MenuItemDropdownVue :name="'小米手机'" :code="100012" />
           
         </div>
         <div class="header-search">
@@ -55,9 +56,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./../assets/scss/base.scss";
-@import "./../assets/scss/mixin.scss";
-@import "./../assets/scss/config.scss";
+@import "../../assets/scss/base.scss";
+@import "../../assets/scss/mixin.scss";
+@import "../../assets/scss/config.scss";
 .header {
   .nav-header {
     .container {

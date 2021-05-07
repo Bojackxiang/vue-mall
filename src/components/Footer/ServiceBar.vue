@@ -18,7 +18,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./../assets/scss/mixin.scss";
+@import "../../assets/scss/base.scss";
+@import "../../assets/scss/mixin.scss";
+@import "../../assets/scss/config.scss";
 .service {
   padding: 33px 0;
   color: #666666;

@@ -10,8 +10,8 @@
 
 
 <script>
-import OrderFooter from '../components/OrderHeader.vue'
-import OrderHeader from '../components/OrderHeader.vue'
+import OrderFooter from '../components/Header/OrderHeader.vue'
+import OrderHeader from '../components/Header/OrderHeader.vue'
 
     export default {
         components: {
