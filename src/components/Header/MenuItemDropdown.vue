@@ -44,7 +44,6 @@ export default {
         })
         .then((res) => {
           const data = res.data.list.slice(0, 6);
-          console.log(data);
           this.itemList = data;
         });
     },

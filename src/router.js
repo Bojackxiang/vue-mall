@@ -10,6 +10,7 @@ import OrderList from './pages/OrderList'
 import OrderPay from './pages/OrderPay'
 import Home from './pages/Home'
 import Order from './pages/Order'
+import Login from './pages/Login'
 
 Vue.use(Router)
 
@@ -17,7 +18,6 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'home',
             component: Home,
             children: [ // 子路由
                 {
@@ -41,6 +41,11 @@ export default new Router({
                 },
             ],
             
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login, 
         },
         {
             path: '/cart',

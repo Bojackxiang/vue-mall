@@ -66,7 +66,6 @@
             /></a>
           </div>
           <div class="list-box">
-
             <div class="list" v-for="(arr, i) in phoneList" :key="i">
               <div class="item" v-for="(item, j) in arr" v-bind:key="j">
                 <span :class="{ 'new-pro': j % 2 === 0 }">新品</span>
@@ -114,7 +113,7 @@ import {
   adsList,
   menuTitles,
 } from "../Constants/index";
-import Modal from '../components/Modal'
+import Modal from "../components/Modal";
 import "swiper/dist/css/swiper.css";
 export default {
   name: "index",
@@ -122,7 +121,7 @@ export default {
     swiper,
     swiperSlide,
     ServiceBar,
-    Modal
+    Modal,
   },
   data() {
     return {
@@ -140,8 +139,8 @@ export default {
     this.init();
   },
   methods: {
-    test(){
-      console.log('parent test function');
+    test() {
+      console.log("parent test function");
     },
     init() {
       this.axios
@@ -156,13 +155,12 @@ export default {
           this.loading = false;
         });
     },
-    addCart(itemId){
-      console.log('itemId: ', itemId);
+    addCart(itemId) {
       this.showModal = true;
     },
-    goToCart(){
-      this.$router.push('/cart')
-    }
+    goToCart() {
+      this.$router.push("/cart");
+    },
   },
 };
 </script>
