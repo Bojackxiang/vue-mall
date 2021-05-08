@@ -1,6 +1,11 @@
 <template>
   <div class="header">
-    <Topbar :username="'alex'" :cartCount="12" :login="login" :logout="logout"/>
+    <Topbar
+      :username="username"
+      :cartCount="cartNumber"
+      :login="login"
+      :logout="logout"
+    />
     <div class="nav-header">
       <div class="container">
         <div class="header-logo">
@@ -10,7 +15,6 @@
           <MenuItemDropdownVue :name="'小米手机'" :code="100012" />
           <MenuItemDropdownVue :name="'小米手机'" :code="100012" />
           <MenuItemDropdownVue :name="'小米手机'" :code="100012" />
-          
         </div>
         <div class="header-search">
           <div class="wrapper">
@@ -29,18 +33,27 @@ import Topbar from "./TopBar";
 
 export default {
   name: "nav-header",
+  created() {
+    console.log("is vuex value available ? ", this.$store.state);
+  },
   components: {
     Topbar,
     MenuItemDropdownVue,
   },
+  computed: {
+    username () {
+      return this.$store.state.displayUsername;
+    },
+    cartNumber () {
+      return this.$store.state.cartCount;
+    },
+  },
   data() {
     return {
-      username: "Alex",
       phoneList: [],
     };
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     goToCart() {
       this.$router.push("/cart");
