@@ -55,7 +55,9 @@
   </div>
 </template>
 <script>
+import {mapActions} from 'vuex'
 export default {
+  
   name: "login",
   data() {
     return {
@@ -67,6 +69,7 @@ export default {
     };
   },
   methods: {
+     
     resetFormState() {
       this.error = false;
       this.errorMsg = "";
@@ -75,7 +78,7 @@ export default {
       this.username = "";
       this.password = "";
     },
-
+    ...mapActions(['saveUserName']), // 这边用的是 stirng， 而不是 value
     login() {
       this.resetFormState();
       let { username, password } = this;
@@ -86,6 +89,9 @@ export default {
         return;
       }
 
+      // this.$store.dispatch('saveUserName', username)
+      // 替换成 mapAction 里面的东西
+      this.saveUserName(username)
       this.axios
         .post("/api/user/login", {
           username,
