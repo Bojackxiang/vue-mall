@@ -78,6 +78,7 @@
 import OrderHeader from "./../components/Header/OrderHeader";
 import ServiceBar from "./../components/Footer/ServiceBar";
 import NavFooter from "./../components/Footer/NavFooter";
+import {Message} from 'element-ui'
 
 export default {
   name: "index",
@@ -158,6 +159,8 @@ export default {
     },
     // 购物车下单
     order() {
+      Message.success('hello world')
+      return;
       let isCheck = this.list.every((item) => !item.productSelected);
       if (isCheck) {
         console.log('1')
