@@ -155,9 +155,17 @@ export default {
           this.loading = false;
         });
     },
-    addCart(itemId) {
-      this.showModal = true;
-    },
+    addCart(id){
+        this.axios.post('/api/carts',{
+          productId:id,
+          selected: true
+        }).then((res)=>{
+          this.showModal = true;
+          this.$store.dispatch('saveCartCount',res.cartTotalQuantity);
+        }).catch(()=>{
+          this.showModal = true;
+        });
+      },
     goToCart() {
       this.$router.push("/cart");
     },

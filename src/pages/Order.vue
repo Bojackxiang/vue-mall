@@ -1,26 +1,23 @@
 <template>
-    <div>
-        <order-header/>
-        <router-view/>
-        <order-footer/>
-
-    </div>
+  <div>
+    <router-view />
+    <Footer />
+  </div>
 </template>
 
 
 
 <script>
-import OrderFooter from '../components/Header/OrderHeader.vue'
-import OrderHeader from '../components/Header/OrderHeader.vue'
+import OrderHeader from "../components/Header/OrderHeader.vue";
+import Footer from '../components/Footer/NavFooter'
 
-    export default {
-        components: {
-            OrderHeader,
-                OrderFooter            
-        }
-    }
+export default {
+  components: {
+    OrderHeader,
+    Footer,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>

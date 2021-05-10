@@ -7,6 +7,8 @@ import config from './config'
 import VueLazyLoad from 'vue-lazyload'   
 import VueCookies from 'vue-cookies';
 import store from './store'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 axios.defaults.baseURL = config.baseURL
 axios.defaults.timeout = 8000; // ! 一定要设置超时的时间
@@ -35,6 +37,7 @@ Vue.use(VueLazyLoad,  {
 Vue.use(VueCookies)
 Vue.use(store)
 Vue.config.productionTip = false
+Vue.use(ElementUI);
 
 new Vue({
   store,
